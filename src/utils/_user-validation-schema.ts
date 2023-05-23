@@ -1,0 +1,60 @@
+import Joi from "joi";
+
+const updateUserSchema = Joi.object({
+    username: Joi.string()
+        .min(3)
+        .max(10)
+        .required()
+        .messages({
+            "string.min": "username must be at least 3 characters",
+            "any.required": "username is required"
+        }),
+
+    email: Joi.string()
+        .email()
+        .messages({
+            "string.email": "invalid email format"
+        }),
+
+    first_name: Joi.string().allow("").optional(),
+    last_name: Joi.string().allow("").optional(),
+    phone: Joi.string().allow("").optional(),
+})
+
+
+const profileSchema = Joi.object({
+    first_name: Joi.string().allow("").optional(),
+    last_name: Joi.string().allow("").optional(),
+    phone: Joi.string().allow("").optional(),
+})
+
+const changePasswordRestSchema = Joi.object({
+    new_password: Joi.string()
+        .required()
+        .regex(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/)
+        .messages({
+            "string.pattern.base": "Invalid Password Format Provided ( Must be at least 8 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character )"
+        }),
+
+    new_password_confirmation: Joi.any()
+        .equal(Joi.ref('new_password'))
+        .required()
+        .messages({ 'any.only': 'Passwords does not match' }),
+
+    password: Joi.string()
+        .required()
+})
+
+const getUsersSchema = Joi.object({
+    term: Joi.string().allow("").optional(),
+    page: Joi.number().optional()
+});
+
+
+
+export {
+    profileSchema,
+    updateUserSchema,
+    changePasswordRestSchema,
+    getUsersSchema
+}
