@@ -30,6 +30,7 @@ export default class TaskServices {
         return await this.taskRepo.findOne(data)
     }
 
+    //add the fifth functionality (Get All)
     async findTask(id: string) {
         try {
             const task = await this.taskRepo.findById(id);

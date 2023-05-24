@@ -42,6 +42,7 @@ export default class TaskController extends Controller {
         }
     };
 
+    //add the fifth functionality (Get All)
     async getTasksHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
 
