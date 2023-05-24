@@ -43,4 +43,5 @@ server.errorHandler()
 
 server.run()
 
+//database connection
 connectDB()
