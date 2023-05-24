@@ -22,7 +22,7 @@ TOKEN_SECRET=JWT-SECRET-KEY
 
 Access_Token_Expire=token-expire-time
 
-MONGODB_URL= Your MongoDB database URL (e.g., mongodb+srv://<username>:<password>@cluster0.pxs5n.mongodb.net/<database>?retryWrites=true&w=majority
+MONGODB_URL= Your MongoDB database URL (e.g., mongodb+srv://{username}:{password}@cluster0.pxs5n.mongodb.net/{database name}?retryWrites=true&w=majority
 
 WHITELISTED_DOMAINS=allowed-cors-domains-separated-by-commas
 
