@@ -29,18 +29,6 @@ export class AuthorizationMiddleware {
         }
     );
 
-    refreshTokenExtract(req: Request, res: Response, next: NextFunction) {
-        const refreshToken = req.signedCookies["refresh_token"];
-
-        if (!refreshToken) {
-            return next(setError(400, "refresh_token required"))
-        }
-
-        req.refreshToken = refreshToken;
-
-        next();
-    }
-
 
     authMiddleware(req: Request, res: Response, next: NextFunction) {
 
@@ -52,7 +40,8 @@ export class AuthorizationMiddleware {
             try {
                 const userSrv = Container.get(UserServices)
 
-                const user = await userSrv.findUser({ id: decryptToken.id });
+                const user = await userSrv.findUser(decryptToken.id);
+
                 req.user = user;
                 next()
             } catch (error) {

@@ -16,13 +16,9 @@ export default class JwtServices {
             expiresIn: config.jwt.accessTokenExpire
         })
 
-        const refreshToken = sign(data, config.jwt.secret!, {
-            expiresIn: config.jwt.refreshTokenExpire
-        })
 
         return {
             accessToken,
-            refreshToken
         }
     }
 

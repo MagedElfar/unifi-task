@@ -6,6 +6,7 @@ import morgan from "morgan";
 import routes from "./route";
 import cookieParser from "cookie-parser"
 import config from "./config";
+import { connectDB } from "./plugins/mongoDB";
 
 const app: Application = express();
 
@@ -26,7 +27,6 @@ server.loadMiddleware([
     }),
     morgan("short"),
     urlencoded({ extended: true }),
-    cookieParser(config.cookie.secret),
     json(),
 ])
 
@@ -42,3 +42,5 @@ server.setRoutes(routes);
 server.errorHandler()
 
 server.run()
+
+connectDB()

@@ -3,10 +3,9 @@ import Controller from "../app/controller";
 import AuthController from "../controllers/auth.controllers";
 import UserController from '../controllers/user.controllers';
 import AuthServices from "../services/auth.services";
-import ProfileImageServices from '../services/profileImage.services';
 import UserServices from '../services/user.services';
-
-
+import TaskController from '../controllers/task.controllers';
+import TaskServices from '../services/task.services';
 
 const routes: Controller[] = [
     new AuthController(
@@ -17,7 +16,11 @@ const routes: Controller[] = [
     new UserController(
         "/users",
         Container.get(UserServices),
-        Container.get(ProfileImageServices)
+    ),
+
+    new TaskController(
+        "/tasks",
+        Container.get(TaskServices),
     )
 ]
 

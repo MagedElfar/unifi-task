@@ -1,14 +1,14 @@
-export class GetTasksDto {
-    [key: string]: any
-    parentId?: number;
-    limit?: number;
-    term?: string;
-    page?: number;
-    userId?: number;
-    spaceId?: number;
-    project?: number;
-    user?: any;
-    orderBy?: string;
-    order?: string;
-    status?: string
+import { Types } from "mongoose";
+import { TaskStatus } from "../model/task.model";
+
+export class CreateTaskDto {
+    name: string;
+    description: string;
+    user: Types.ObjectId
+}
+
+export class UpdateTaskDto {
+    name?: string;
+    description?: string;
+    status?: TaskStatus
 }
